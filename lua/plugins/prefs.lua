@@ -1,4 +1,8 @@
--- Custom preferences carried over from kickstart.nvim
+-- Custom preferences
+
+-- Detect terminal capabilities
+local colorterm = vim.env.COLORTERM or ""
+local has_truecolor = colorterm == "truecolor" or colorterm == "24bit"
 
 ---@type LazySpec
 return {
@@ -23,4 +27,10 @@ return {
       },
     },
   },
+  -- Disable nerd font icons when true color is unavailable (e.g., Coder browser terminal)
+  not has_truecolor and {
+    "AstroNvim/astroui",
+    ---@type AstroUIOpts
+    opts = { icons_enabled = false },
+  } or nil,
 }
