@@ -4,3 +4,12 @@
 
 -- Source shared vimrc
 vim.cmd "source ~/.vimrc"
+
+-- Detect terminal capabilities
+local colorterm = vim.env.COLORTERM or ""
+local has_truecolor = colorterm == "truecolor" or colorterm == "24bit"
+
+-- Disable true color in terminals that don't support it (e.g., Coder browser terminal)
+if not has_truecolor then
+  vim.opt.termguicolors = false
+end
