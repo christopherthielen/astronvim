@@ -10,6 +10,8 @@ local colorterm = vim.env.COLORTERM or ""
 local has_truecolor = colorterm == "truecolor" or colorterm == "24bit"
 
 -- Disable true color in terminals that don't support it (e.g., Coder browser terminal)
+-- Fall back to lunaperche which has proper 256-color support
 if not has_truecolor then
   vim.opt.termguicolors = false
+  vim.cmd.colorscheme "lunaperche"
 end
