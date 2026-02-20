@@ -3,6 +3,17 @@
 ---@type LazySpec
 return {
   {
+    "folke/snacks.nvim",
+    opts = {
+      picker = {
+        sources = {
+          files = { follow = true },
+          grep = { follow = true },
+        },
+      },
+    },
+  },
+  {
     "AstroNvim/astrocore",
     ---@type AstroCoreOpts
     opts = {
